@@ -17,9 +17,13 @@ def left_shift(a: list) -> None:
 
 
 def deepcopy(a):
-    if not isinstance(a, list):
-        return a
-    return [deepcopy(element) for element in a]
+    r = []
+    for i in a:
+        if not isinstance(i, list):
+            r.append(i)
+        else:
+            r.append(deepcopy(i))
+    return r
 
 
 # Aufgabe 4

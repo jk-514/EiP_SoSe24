@@ -75,14 +75,13 @@ def fibonacci(n: int) -> int:
 # Aufgabe 7
 
 
-def avg(a: list) -> float:
-    def sum_(a: list, i: int = 0):
-        if i == len(a):
-            return 0
-        return a[i] + sum_(a, i+1)
-
-    return sum_(a) / len(a)
-
+def avg(a: list, s: int = 0, i: int = 0) -> float:
+    if 0 == len(a):
+        return 0
+    elif i == len(a):
+        return s / i
+    else:
+        return avg(a, s+a[i], i+1)
 
 # Aufgabe 8
 

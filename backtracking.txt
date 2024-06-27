@@ -1,0 +1,15 @@
+def vervollständige(Konfiguration K):
+    if vollständig(K) then
+        return True
+    end
+
+    for each Erweiterungsmöglichkeit E do
+        erweitere (K, E)
+        if zulässig(K) then
+            if vervollständige(K) then
+                return True
+            end
+        end
+        mache rückgängig(K, E)
+    end
+    return False

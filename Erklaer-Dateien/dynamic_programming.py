@@ -1,8 +1,17 @@
+# Ich erkläre an dieser Stelle noch einmal dynamische Programmierung.
+# Die Idee der dynamischen Programmierung ist es, Zwischenergebnisse zu speichern und redundante Rechnungen zu sparen.
+# Kurz gesagt wird ein Memory angelegt, also ein Dictionary, das als Keys jeweils n und als Values den Funktionswert von n
+# speichert.
+
+
 def fibonacci(n):
     if n <= 1:
         return n
     else:
         return fibonacci(n-1) + fibonacci(n-2)
+
+
+# Die Fibonacci-Funktion ist recht ineffizient. Beheben wir das mal.
 
 
 def dynamic_fibonacci(n, mem=None):
@@ -22,4 +31,77 @@ def dynamic_fibonacci(n, mem=None):
         return f
 
 
-print(dynamic_fibonacci(100))
+# Als Übungsaufgabe kann man die Fibonacci-Funktion iterativ implementieren, was je nach Implementierung sogar noch
+# effizienter sein kann.
+
+# Ein anderes Beispiel:
+
+
+def func(n):
+    if n <= 1:
+        return 42
+    else:
+        return max(func(n-2) + 1, func(n-1) + 2)
+
+
+# Diese Funktion hat keinen tieferen Sinn, aber sie hat offensichtlich Potenzial, verbessert zu werden. Machen wir also
+# auch das mit einem Memory.
+
+
+def dynamic_func(n, mem=None):
+
+    # Dafür sorgen, dass jedes Mal, wenn die Funktion aufgerufen wird, ein neues Memory erstellt wird.
+
+    if mem is None:
+        mem = {}
+
+    # Es gibt jetzt einen neuen Basisfall für die Funktion, und zwar, dass der Wert bereits berechnet wurde.
+
+    if n in mem:
+        return mem[n]
+
+    # Der bereits bestehende Basisfall wird darum ergänzt, dass das Ergebnis ins Memory geschrieben wird.
+
+    if n <= 1:
+        mem[n] = 42
+        return 42
+
+    else:
+        # analog
+        mem[n] = max(dynamic_func(n-2, mem) + 1, dynamic_func(n-1, mem) + 2)
+
+        # Da Dicts mutable sind, kann das Memory in den Rekursionsschritten beschrieben werden und muss nicht zurückgegeben werden
+        # Siehe auch Referenzsemantik (VL)
+
+        # Wichtig: Den Wert aus dem Memory ausgeben und nicht noch mal berechnen, kostet sonst unnötig Zeit und gerade die
+        # wollen wir sparen.
+        return mem[n]
+
+
+# Übungsaufgaben:
+# Hier sind (mehr oder weniger sinnvollen) Funktionen gegeben. Verbessern Sie die Laufzeit mit dynamischer Programmierung.
+
+
+def a(n):
+    if n < 10:
+        return 0
+    else:
+        return (a(n-1) * 2 - a(n-2)) + 2
+
+
+def b(n):
+    if n < 10:
+        return 1
+    else:
+        return b(n-1) + b(n-2) + b(n-3)
+
+
+def c(n):
+    if n < 2:
+        return n
+    else:
+        return max(c(n-1), c(n-3) * n)
+
+
+# Als weitere Übungen können Sie das Knapsack-Problem (siehe Mensapreise-Aufgabe) oder die Tribonacci-Funktion mit
+# dynamischer Programmierung lösen.

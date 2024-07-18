@@ -30,7 +30,7 @@ def count_steps_iterative(n: int, memory: Optional[Dict[int, int]] = None) -> in
         if i < 2:
             memory[i] = i
         else:
-            memory[i] = min(count_steps(i - 1, memory), count_steps(i - 2, memory), count_steps(i // 2, memory)) + 1
+            memory[i] = min(memory[i-1], memory[i-2], memory[i//2]) + 1
 
     return memory[n]
 

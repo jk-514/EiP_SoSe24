@@ -51,8 +51,24 @@ def func(n):
 def dynamic_func(n, mem=None):
 
     # Dafür sorgen, dass jedes Mal, wenn die Funktion aufgerufen wird, ein neues Memory erstellt wird.
+    # Prinzipiell ist es möglich, mem auch ein leeres Dictionary als Standardwert zu geben.
+    # Das Problem ist, dass das nicht so funktioniert wie erwartet. Es wird dann nicht jedes Mal, wenn nichts für mem
+    # angegeben wird, ein neues Dictionary angelegt, sondern es wird immer dasselbe genommen, sobald es einmal erzeugt wurde.
+    # Bei mutablen Datentypen kann dies zu unerwartetem Verhalten führen. In diesem Fall wäre das nicht weiter tragisch,
+    # es würde die Funktion bei wiederholter Ausführung sogar schneller machen, aber es ist keine gute Praxis, weil es
+    # im Allgemeinen zu unerwartetem Verhalten führt.
+    # Wenn hingegen immutable Datentypen verwendet werden, besteht dieses Problem eben nicht.
+
+    # Erinnerung: Strings, Ints, Floats, Complex, Tupel und None sind immutable, während Listen, Sets und Dictionaries mutable sind
 
     if mem is None:
+
+        # Was ist eigentlich der Unterschied zwischen == und is?
+        # == fragt ab, ob zwei Objekte denselben Wert haben, wenn z.B. zwei Variablen x und y beiden den Wert 42 haben, dann
+        # würde == True liefern. is fragt ab, ob zwei Objekte denselben Zeiger haben, also auf denselben Ort im Speicher verweisen.
+        # Wenn x und y zwei unterschiedliche Variablen sind, liefert das False. Im Fall von None ist der Zeiger leer, daher ist
+        # eine gute Praxis is zu nutzen (== geht auch, ist aber unschön)
+
         mem = {}
 
     # Es gibt jetzt einen neuen Basisfall für die Funktion, und zwar, dass der Wert bereits berechnet wurde.

@@ -6,7 +6,6 @@ from datetime import date
 # Aufgabe 1
 
 def count_steps(n: int, memory: Optional[Dict[int, int]] = None) -> int:
-
     if memory is None:
         memory = {}
 
@@ -18,7 +17,7 @@ def count_steps(n: int, memory: Optional[Dict[int, int]] = None) -> int:
         return n
 
     else:
-        memory[n] = min(count_steps(n-1, memory), count_steps(n-2, memory), count_steps(n//2, memory)) + 1
+        memory[n] = min(count_steps(n - 1, memory), count_steps(n - 2, memory), count_steps(n // 2, memory)) + 1
         return memory[n]
 
 
@@ -26,11 +25,11 @@ def count_steps_iterative(n: int, memory: Optional[Dict[int, int]] = None) -> in
     if memory is None:
         memory = {}
 
-    for i in range(n+1):
+    for i in range(n + 1):
         if i < 2:
             memory[i] = i
         else:
-            memory[i] = min(memory[i-1], memory[i-2], memory[i//2]) + 1
+            memory[i] = min(memory[i - 1], memory[i - 2], memory[i // 2]) + 1
 
     return memory[n]
 
@@ -61,7 +60,7 @@ def count_digits(n: int) -> int:
 def count_digits_recursive(n: int) -> int:
     if n < 10:
         return 1
-    return count_digits_recursive(n//10) + 1
+    return count_digits_recursive(n // 10) + 1
 
 
 # iv
@@ -76,6 +75,7 @@ def count_long_words(l: List[str]) -> int:
 
 def count_fancy_long_words(l: List[str]) -> int:
     return len([word for word in l if len(word) > 5 and "e" in word.lower()])
+
 
 # vi
 
@@ -132,10 +132,10 @@ def analyze_open_stats(content: List[Dict[str, str]]) -> Tuple[float, float, flo
 
 
 def greatest_gap(content: List[Dict[str, str]]) -> str:
-    prices: List[Tuple[float, float]] = list(zip([float(line["high"]) for line in content],
-                                                 [float(line["low"]) for line in content],
-                                                 [line["date"] for line in content]))
-    return max(prices, key=lambda x: abs(x[0]-x[1]))[2]
+    prices: List[Tuple[float, float, str]] = list(zip([float(line["high"]) for line in content],
+                                                      [float(line["low"]) for line in content],
+                                                      [line["date"] for line in content]))
+    return max(prices, key=lambda x: abs(x[0] - x[1]))[2]
 
 
 # iv
@@ -148,7 +148,7 @@ def sum_profitable_days(content: List[Dict[str, str]]) -> int:
 # v
 
 def avg_growth(content: List[Dict[str, str]]) -> float:
-    growth = [float(line["close"])/float(line["open"]) for line in content]
+    growth = [float(line["close"]) / float(line["open"]) for line in content]
     return sum(growth) / len(growth)
 
 
@@ -198,6 +198,7 @@ class Car:
 
     def __lt__(self, other: Car) -> bool:
         return self.year < other.get_year()
+
 
 # v
 

@@ -2,6 +2,8 @@
 
 i) Gegeben sei eine natuerliche Zahl n > 0. Implementieren Sie eine rekursive Funktion, die die minimale Anzahl an Schritten
 berechnet, um von dieser Zahl zu 0 zu gelangen. Sie duerfen in jedem Schritt 1 abziehen, 2 abziehen oder die Zahl halbieren (Integer Division).
+Hinweis: Auch wenn es klar ist, dass man am schnellsten zur 0 kommt, wenn mit immer durch 2 teilt, sollten Sie trotzdem fuer alle drei Moeglichkeiten einen
+Rekursionsaufruf verwenden, ergibt die folgende Aufgabe wenig Sinn.
 
 ii) Verwenden Sie dynamische Programmierung, um die Laufzeit zu verringern.
 

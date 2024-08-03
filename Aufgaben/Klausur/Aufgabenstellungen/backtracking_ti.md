@@ -20,3 +20,5 @@ Lösung: [[0, 1, 1, 0], [1, 0, 0, 0], [0, 0, 0, 1]]
 Aufgabe 2: Modifizieren Sie Ihre Lösung aus Aufgabe 1, sodass tatsächlich die minimale Teilmenge gefunden wird.
 
 Lösung: [[1, 1, 1, 0], [0, 0, 0, 1]]
+
+In der Datei backtracking_ti.py finden Sie bereits etwas Code als Grundlage.

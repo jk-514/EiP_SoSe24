@@ -11,3 +11,5 @@ Siehe: https://de.puzzle-binairo.com
 
 Wir gehen davon aus, dass Spielfelder quadratisch sind. Ignoriere die 3. Regel und löse Binario mit
 Backtracking.
+
+In der Datei binario.py finden Sie bereits etwas Code als Grundlage.

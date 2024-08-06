@@ -16,7 +16,7 @@ def func2(a: int, b: int, c: int) -> int:
         if a % 3 != 0:
             c += 1
         else:
-            c *= 2
+            c += 2
 
     return c
 

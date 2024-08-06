@@ -13,7 +13,7 @@ def func1(a: int, b: int) -> int:
 def func2(a: int, b: int, c: int) -> int:
     while a < b:
         a += 1
-        if a % 2 == 0:
+        if a % 3 != 0:
             c += 1
         else:
             c *= 2

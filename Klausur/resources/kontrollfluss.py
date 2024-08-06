@@ -5,6 +5,7 @@ def func1(a: int, b: int) -> int:
             c += 1
         else:
             c *= 2
+        a += 1
 
     return c
 
